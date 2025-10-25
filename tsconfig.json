@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+      /* 模块和目标配置 (解决 .ts 扩展名错误的关键) */
+      "module": "CommonJS",                  /* 告诉 TypeScript 使用 CommonJS 模块系统 */
+      "target": "es5",                    /* 编译目标 ES 版本 */
+      "esModuleInterop": true,               /* 允许 Express 等传统 JS 库兼容 ES 模块导入 */
+      "moduleResolution": "node",            /* 模块解析策略 */
+  
+      /* 严格性配置 */
+      "strict": true,                        /* 启用所有严格类型检查选项 */
+      "skipLibCheck": true,                  /* 跳过声明文件的类型检查，加快编译速度 */
+  
+      /* 输出配置 */
+      "outDir": "./dist",                    /* 编译输出目录（虽然开发环境不用，但配置完整） */
+      "rootDir": "./src",                     /* 源文件目录 */
+
+      /* Source Map 设置 */
+      "sourceMap": true,  // <--- 调式用
+
+    },
+    
+    "include": ["src/**/*.ts"],              /* 包含 src 目录下的所有 .ts 文件 */
+    "exclude": ["node_modules"]
+  }

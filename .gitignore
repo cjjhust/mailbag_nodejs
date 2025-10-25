@@ -1,0 +1,18 @@
+# 依赖
+/node_modules
+/package-lock.json
+
+# 构建输出
+/dist
+/build
+
+# OS文件
+.DS_Store
+
+# 环境或本地配置
+.env
+serverInfo.json
+# Log文件
+npm-debug.log
+
+

@@ -1,0 +1,12 @@
+FROM node:20-alpine
+
+# 设置容器内的工作目录
+WORKDIR /mailbag
+
+COPY package*.json ./ 
+RUN npm install 
+# 暴露端口
+EXPOSE 3000
+
+# CMD 定义默认的启动方式，但我们会在 docker-compose.yml 中覆盖它
+CMD ["npm", "run", "start"]

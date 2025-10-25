@@ -1,0 +1,29 @@
+services:
+  # ------------------------------------
+  # 1. 后端服务 (Node.js API)
+  # ------------------------------------
+  mailbag:
+    build: 
+      context: ./
+      dockerfile: Dockerfile.Mailbag
+    container_name: mailbag_dev
+    ports:
+      - "3000:3000"
+    # 🌟 关键修改：指定可靠的外部 DNS 服务器
+    dns:
+      - 1.1.1.1  # Cloudflare DNS (推荐)
+      - 8.8.8.8  # Google DNS
+    volumes:
+      # 1. 核心代码同步：主机 ./backend 目录实时同步到容器 /app
+      - ./:/mailbag 
+      # 2. 依赖隔离：node_modules 使用匿名卷，安装在容器内，不污染主机
+      - /mailbag/node_modules 
+      # 3. 隔离子目录下的 node_modules：为每个子目录单独添加覆盖 
+      - /mailbag/client/node_modules
+    
+    # 启动命令：在启动时先安装依赖，再运行开发脚本
+    # 注意：这里的 start:dev 脚本必须在你的 package.json 中定义 (如使用 nodemon)
+    command: /bin/sh -c "npm run start"
+    
+    restart: unless-stopped
+
