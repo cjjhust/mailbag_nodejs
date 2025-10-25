@@ -11,7 +11,7 @@
 
 # 环境或本地配置
 .env
-serverInfo.json
+serverInfo_key.json
 # Log文件
 npm-debug.log
 
